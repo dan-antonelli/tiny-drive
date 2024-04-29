@@ -1,6 +1,6 @@
 # barebones-drive-client
 
-The client of a barebones Google Drive-version in React + TS.
+The client of a barebones Google Drive-version in React + TS. The ui is made with [shadcn](https://ui.shadcn.com/).
 
 ## Project Structure
 

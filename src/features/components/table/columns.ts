@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { FileInfo } from '@/types/types';
 
-export const columns: ColumnDef<FileInfo>[] = [
+const columns: ColumnDef<FileInfo>[] = [
   {
     accessorKey: 'name',
     header: 'Name',
@@ -15,3 +15,5 @@ export const columns: ColumnDef<FileInfo>[] = [
     header: 'Size',
   },
 ];
+
+export default columns;

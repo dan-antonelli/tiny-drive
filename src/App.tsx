@@ -1,12 +1,13 @@
 import './App.css';
-import { Button } from '@/components/ui/button';
+import { DataTable, files, columns } from '@/features';
 
 function App() {
   return (
-    <>
-      <p>app with shadcn</p>
-      <Button>Click me</Button>
-    </>
+    <div className='w-full'>
+      <div className='container mx-auto py-10'>
+        <DataTable columns={columns} data={files} />
+      </div>
+    </div>
   );
 }
 

@@ -17,15 +17,17 @@ import { FileInfo } from '@/types/types';
 const columns: ColumnDef<FileInfo>[] = [
   {
     accessorKey: 'name',
-    header: () => <div className='text-left'>Name</div>,
+    header: () => <div className='text-center'>Name</div>,
   },
   {
     accessorKey: 'lastModified',
-    header: () => <div className='text-right'>Last Modified</div>,
+    header: () => <div className='text-center'>Last Modified</div>,
     cell: ({ row }) => {
       const lastModified: string = row.getValue('lastModified');
       return (
-        <div className='text-right font-medium'>{formatDate(lastModified)}</div>
+        <div className='text-center font-medium'>
+          {formatDate(lastModified)}
+        </div>
       );
     },
   },

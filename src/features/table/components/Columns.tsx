@@ -47,7 +47,6 @@ const columns: ColumnDef<FileInfo>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end' className='bg-white'>
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem>Download</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Rename</DropdownMenuItem>

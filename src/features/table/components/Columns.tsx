@@ -17,7 +17,7 @@ import { FileInfo } from '@/types/types';
 const columns: ColumnDef<FileInfo>[] = [
   {
     accessorKey: 'name',
-    header: () => <div className='text-right'>Name</div>,
+    header: () => <div className='text-left'>Name</div>,
   },
   {
     accessorKey: 'lastModified',

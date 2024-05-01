@@ -35,20 +35,7 @@ const columns: ColumnDef<FileInfo>[] = [
   },
   {
     id: 'actions',
-    cell: ({ row }) => {
-      const handleCopy = () => {
-        navigator.clipboard.writeText(file.id).then(
-          () => {
-            console.log('Text copied to clipboard'); // TODO: change to toast message
-          },
-          (error) => {
-            console.error('Failed to copy text: ', error); // TODO: change to toast message
-          }
-        );
-      };
-
-      const file = row.original;
-
+    cell: () => {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -59,7 +46,7 @@ const columns: ColumnDef<FileInfo>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end'>
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem onClick={handleCopy}>Download</DropdownMenuItem>
+            <DropdownMenuItem>Download</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Rename</DropdownMenuItem>
             <DropdownMenuItem>Move to trash</DropdownMenuItem>

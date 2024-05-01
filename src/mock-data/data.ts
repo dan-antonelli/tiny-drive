@@ -1,6 +1,6 @@
 import { FileInfo } from '@/types/types';
 
-const files: FileInfo[] = [
+const data: FileInfo[] = [
   {
     id: '728ed52f',
     name: 'example.pdf',
@@ -14,4 +14,4 @@ const files: FileInfo[] = [
   },
 ];
 
-export default files;
+export default data;

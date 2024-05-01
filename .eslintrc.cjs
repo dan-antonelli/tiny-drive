@@ -21,6 +21,7 @@ module.exports = {
       'error',
       { patterns: ['@/features/*/*'] },
     ],
+    "react/prop-types": "off",
   },
   parserOptions: {
     ecmaVersion: 'latest',

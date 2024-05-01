@@ -5,10 +5,8 @@ import data from '@/mock-data/data';
 
 function App() {
   return (
-    <div className='w-full'>
-      <div className='container mx-auto py-10'>
-        <DataTable columns={columns} data={data} />
-      </div>
+    <div className='w-90vw h-screen'>
+      <DataTable columns={columns} data={data} />
     </div>
   );
 }

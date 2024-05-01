@@ -33,6 +33,41 @@ const columns: ColumnDef<FileInfo>[] = [
     accessorKey: 'size',
     header: 'Size',
   },
+  {
+    id: 'actions',
+    cell: ({ row }) => {
+      const handleCopy = () => {
+        navigator.clipboard.writeText(file.id).then(
+          () => {
+            console.log('Text copied to clipboard'); // TODO: change to toast message
+          },
+          (error) => {
+            console.error('Failed to copy text: ', error); // TODO: change to toast message
+          }
+        );
+      };
+
+      const file = row.original;
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant='ghost' className='h-8 w-8 p-0'>
+              <span className='sr-only'>Open menu</span>
+              <MoreHorizontal className='h-4 w-4' />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align='end'>
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem onClick={handleCopy}>Download</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Rename</DropdownMenuItem>
+            <DropdownMenuItem>Move to trash</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
+  },
 ];
 
 export default columns;

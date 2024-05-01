@@ -1,24 +1,13 @@
 import './App.css';
-import formatDate from './features/table/utils/formatDate';
 
 import { DataTable, columns } from '@/features/table';
 import data from '@/mock-data/data';
-import { FileInfo } from '@/types/types';
 
 function App() {
-  const formatData = (data: FileInfo[]) => {
-    return data.map((item: FileInfo) => {
-      return {
-        ...item,
-        lastModified: formatDate(item.lastModified),
-      };
-    });
-  };
-
   return (
     <div className='w-full'>
       <div className='container mx-auto py-10'>
-        <DataTable columns={columns} data={formatData(data)} />
+        <DataTable columns={columns} data={data} />
       </div>
     </div>
   );

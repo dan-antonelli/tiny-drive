@@ -1,8 +1,9 @@
 import './App.css';
+import formatDate from './features/table/utils/formatDate';
+
 import { DataTable, columns } from '@/features/table';
 import data from '@/mock-data/data';
 import { FileInfo } from '@/types/types';
-import formatDate from './features/table/utils/formatDate';
 
 function App() {
   const formatData = (data: FileInfo[]) => {

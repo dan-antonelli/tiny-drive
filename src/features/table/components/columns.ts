@@ -1,4 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
+
 import { FileInfo } from '@/types/types';
 
 const columns: ColumnDef<FileInfo>[] = [

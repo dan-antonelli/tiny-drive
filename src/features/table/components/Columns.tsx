@@ -3,7 +3,7 @@ import { MoreHorizontal } from 'lucide-react';
 
 import formatDate from '../utils/formatDate';
 
-import { Button } from '@/components/ui/button';
+import Button from '@/components/shadcn/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +11,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/shadcn/ui/dropdown-menu';
 import { FileInfo } from '@/types/types';
 
 const columns: ColumnDef<FileInfo>[] = [

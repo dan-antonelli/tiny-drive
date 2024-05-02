@@ -25,3 +25,5 @@ Project structure is based on [bulletproof react](https://github.com/alan2207/bu
 - limit uploads: one user can upload only up to a certain size, and there's a collective size limit to uploads
 - delete everything at certain intervals
 - logout after a while
+- search
+- sort

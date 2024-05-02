@@ -1,5 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { MoreHorizontal } from 'lucide-react';
+import { File as FileIcon } from 'lucide-react';
 
 import formatDate from '../utils/formatDate';
 
@@ -14,6 +15,13 @@ import {
 import { FileInfo } from '@/types/types';
 
 const columns: ColumnDef<FileInfo>[] = [
+  {
+    accessorKey: '',
+    id: 'icon',
+    cell: () => {
+      return <FileIcon />;
+    },
+  },
   {
     accessorKey: 'name',
     header: () => <div className='text-center'>Name</div>,

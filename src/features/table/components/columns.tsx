@@ -1,12 +1,13 @@
 import { ColumnDef } from '@tanstack/react-table';
 import {
-  ArrowUpDown,
   File as FileIcon,
   Folder as FolderIcon,
   MoreHorizontal,
 } from 'lucide-react';
 
 import formatDate from '../utils/formatDate';
+
+import SortButton from './SortButton';
 
 import Button from '@/components/shadcn/ui/button';
 import {
@@ -28,18 +29,7 @@ const columns: ColumnDef<FileInfo>[] = [
   },
   {
     accessorKey: 'name',
-    header: ({ column }) => {
-      return (
-        <Button
-          className='text-center'
-          variant='secondary'
-          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-        >
-          Name
-          <ArrowUpDown className='ml-2 h-4 w-4' />
-        </Button>
-      );
-    },
+    header: ({ column }) => <SortButton column={column}>Name</SortButton>,
   },
   {
     accessorKey: 'lastModified',

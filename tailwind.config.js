@@ -19,6 +19,7 @@ module.exports = {
     extend: {
       width: {
         '90vw': '90vw',
+        '1/100': '1%',
       },
       colors: {
         border: "hsl(var(--border))",

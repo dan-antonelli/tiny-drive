@@ -17,7 +17,7 @@ import { FileInfo } from '@/types/types';
 const columns: ColumnDef<FileInfo>[] = [
   {
     accessorKey: '',
-    id: 'icon',
+    id: 'type',
     cell: ({ row }) => {
       return row.original.type === 'file' ? <FileIcon /> : <FolderIcon />;
     },

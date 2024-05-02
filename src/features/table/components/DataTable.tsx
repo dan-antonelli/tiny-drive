@@ -37,7 +37,10 @@ export default function DataTable<TData, TValue>({
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className='w-1/3'>
+                  <TableHead
+                    key={header.id}
+                    className={header.id === 'type' ? 'w-px' : 'w-1/8'}
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -58,7 +61,7 @@ export default function DataTable<TData, TValue>({
                 data-state={row.getIsSelected() && 'selected'}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className='w-1/3'>
+                  <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -66,7 +69,7 @@ export default function DataTable<TData, TValue>({
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={columns.length} className='h-24 w-1/3'>
+              <TableCell colSpan={columns.length} className='h-24'>
                 No results.
               </TableCell>
             </TableRow>

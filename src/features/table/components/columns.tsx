@@ -1,6 +1,10 @@
 import { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal } from 'lucide-react';
-import { File as FileIcon, Folder as FolderIcon } from 'lucide-react';
+import {
+  ArrowUpDown,
+  File as FileIcon,
+  Folder as FolderIcon,
+  MoreHorizontal,
+} from 'lucide-react';
 
 import formatDate from '../utils/formatDate';
 
@@ -24,7 +28,18 @@ const columns: ColumnDef<FileInfo>[] = [
   },
   {
     accessorKey: 'name',
-    header: () => <div className='text-center'>Name</div>,
+    header: ({ column }) => {
+      return (
+        <Button
+          className='text-center'
+          variant='secondary'
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Name
+          <ArrowUpDown className='ml-2 h-4 w-4' />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: 'lastModified',

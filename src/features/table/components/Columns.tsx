@@ -46,10 +46,16 @@ const columns: ColumnDef<FileInfo>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end' className='bg-white'>
-            <DropdownMenuItem>Download</DropdownMenuItem>
+            <DropdownMenuItem className='cursor-pointer'>
+              Download
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Rename</DropdownMenuItem>
-            <DropdownMenuItem>Move to trash</DropdownMenuItem>
+            <DropdownMenuItem className='cursor-pointer'>
+              Rename
+            </DropdownMenuItem>
+            <DropdownMenuItem className='cursor-pointer'>
+              Move to trash
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

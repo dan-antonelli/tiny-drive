@@ -17,6 +17,7 @@ Project structure is based on [bulletproof react](https://github.com/alan2207/bu
 - restore from trash
 - rename items
 - drag and drop
+- move items
 - select item
 - select items
 - auth

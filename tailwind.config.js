@@ -20,6 +20,9 @@ module.exports = {
       width: {
         '90vw': '90vw',
       },
+      spacing: {
+        '3.2': '0.320rem',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

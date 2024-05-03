@@ -49,9 +49,14 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+} */
+/* TODO: enable focus ring when tabbing */
+
+.no-outline {
+  outline: none;
 }
 
 @media (prefers-color-scheme: light) {

@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/barebones-drive/',
+  base: '/tiny-drive/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

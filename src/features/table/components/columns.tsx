@@ -46,6 +46,8 @@ const columns: ColumnDef<FileInfo>[] = [
   {
     accessorKey: '',
     id: 'type',
+    // TODO: bugfix: doesn't sort by type
+    header: ({ column }) => <SortButton column={column}>Type</SortButton>,
     cell: ({ row }) => {
       return row.original.type === 'file' ? <FileIcon /> : <FolderIcon />;
     },

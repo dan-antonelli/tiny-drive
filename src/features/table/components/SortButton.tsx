@@ -12,7 +12,7 @@ interface SortButtonProps {
 const SortButton = ({ column, children }: SortButtonProps) => {
   return (
     <Button
-      className='text-center'
+      className='text-center text-gray-500'
       variant='secondary'
       onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
     >

@@ -71,11 +71,11 @@ export default function DataTable<TData, TValue>({
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             table.getColumn('name')?.setFilterValue(event.target.value)
           }
-          className='max-w-sm'
+          className='max-w-sm rounded'
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant='outline' className='ml-auto'>
+            <Button variant='outline' className='ml-auto rounded'>
               Columns
             </Button>
           </DropdownMenuTrigger>
@@ -100,7 +100,7 @@ export default function DataTable<TData, TValue>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className='w-full rounded-md'>
+      <div className='w-full'>
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -152,7 +152,7 @@ export default function DataTable<TData, TValue>({
       </div>
       <div className='flex items-center justify-end space-x-2 py-4'>
         <Button
-          className='cursor-pointer'
+          className='cursor-pointer rounded'
           variant='outline'
           size='sm'
           onClick={() => table.previousPage()}
@@ -161,7 +161,7 @@ export default function DataTable<TData, TValue>({
           Previous
         </Button>
         <Button
-          className='cursor-pointer'
+          className='cursor-pointer rounded'
           variant='outline'
           size='sm'
           onClick={() => table.nextPage()}

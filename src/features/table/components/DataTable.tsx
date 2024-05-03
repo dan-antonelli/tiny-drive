@@ -2,6 +2,7 @@ import {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
+  VisibilityState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -12,6 +13,12 @@ import {
 import React from 'react';
 
 import Button from '@/components/shadcn/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from '@/components/shadcn/ui/dropdown-menu';
 import { Input } from '@/components/shadcn/ui/input';
 import {
   Table,
@@ -35,6 +42,8 @@ export default function DataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
 
   const table = useReactTable({
     data,
@@ -45,9 +54,11 @@ export default function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
     state: {
       sorting,
       columnFilters,
+      columnVisibility,
     },
   });
 
@@ -62,6 +73,32 @@ export default function DataTable<TData, TValue>({
           }
           className='max-w-sm'
         />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant='outline' className='ml-auto'>
+              Columns
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align='end' className='bg-white'>
+            {table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())
+              .map((column) => {
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={column.id}
+                    className={`capitalize cursor-pointer`}
+                    checked={column.getIsVisible()}
+                    onCheckedChange={(value) =>
+                      column.toggleVisibility(!!value)
+                    }
+                  >
+                    {column.id}
+                  </DropdownMenuCheckboxItem>
+                );
+              })}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       <div className='w-full rounded-md border'>
         <Table>

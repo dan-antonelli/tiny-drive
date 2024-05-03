@@ -150,8 +150,8 @@ export default function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className='flex items-center justify-end space-x-4 py-4'>
-        <div className='text-sm text-muted-foreground'>
+      <div className='flex items-center justify-between space-x-4 py-4'>
+        <div className='text-sm pl-8 text-gray-500'>
           {table.getFilteredSelectedRowModel().rows.length} of{' '}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>

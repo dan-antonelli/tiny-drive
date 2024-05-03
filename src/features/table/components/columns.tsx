@@ -10,6 +10,7 @@ import formatDate from '../utils/formatDate';
 import SortButton from './SortButton';
 
 import Button from '@/components/shadcn/ui/button';
+import { Checkbox } from '@/components/shadcn/ui/checkbox';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,6 +21,28 @@ import {
 import { FileInfo } from '@/types/types';
 
 const columns: ColumnDef<FileInfo>[] = [
+  {
+    id: 'select',
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && 'indeterminate')
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label='Select all'
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label='Select row'
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
   {
     accessorKey: '',
     id: 'type',

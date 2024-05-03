@@ -71,7 +71,7 @@ export default function DataTable<TData, TValue>({
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             table.getColumn('name')?.setFilterValue(event.target.value)
           }
-          className='max-w-sm rounded'
+          className='max-w-sm rounded text-gray-500'
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

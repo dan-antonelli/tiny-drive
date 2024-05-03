@@ -87,7 +87,7 @@ export default function DataTable<TData, TValue>({
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
-                    className={`capitalize cursor-pointer`}
+                    className='capitalize cursor-pointer dropdown-menu-item'
                     checked={column.getIsVisible()}
                     onCheckedChange={(value) =>
                       column.toggleVisibility(!!value)

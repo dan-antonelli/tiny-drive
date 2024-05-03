@@ -55,8 +55,12 @@ button:focus-visible {
 } */
 /* TODO: enable focus ring when tabbing */
 
-.no-outline {
-  outline: none;
+.dropdown-menu-item {
+  cursor: pointer;
+}
+
+.dropdown-menu-item:hover {
+  background-color: #edf2f7;
 }
 
 @media (prefers-color-scheme: light) {

@@ -33,7 +33,9 @@ const columns: ColumnDef<FileInfo>[] = [
   },
   {
     accessorKey: 'lastModified',
-    header: () => <div className='text-center'>Last Modified</div>,
+    header: ({ column }) => (
+      <SortButton column={column}>Last modified</SortButton>
+    ),
     cell: ({ row }) => {
       const lastModified: string = row.getValue('lastModified');
       return (
@@ -45,7 +47,7 @@ const columns: ColumnDef<FileInfo>[] = [
   },
   {
     accessorKey: 'size',
-    header: 'Size',
+    header: ({ column }) => <SortButton column={column}>Size</SortButton>,
   },
   {
     id: 'actions',

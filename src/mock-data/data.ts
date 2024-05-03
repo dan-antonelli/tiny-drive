@@ -6,7 +6,7 @@ const data: FileInfo[] = [
     id: '728ed52f',
     type: 'file',
     name: 'example.pdf',
-    lastModified: '2021-06-01T12:00:00',
+    lastModified: '2021-06-02T12:00:00',
     size: '2.5 MB',
   },
   {
@@ -19,14 +19,14 @@ const data: FileInfo[] = [
     id: '728ed52f',
     type: 'file',
     name: 'example.pdf',
-    lastModified: '2021-06-01T12:00:00',
+    lastModified: '2021-06-03T12:00:00',
     size: '2.5 MB',
   },
   {
     id: '728ed52f',
     type: 'file',
     name: 'example.pdf',
-    lastModified: '2021-06-01T12:00:00',
+    lastModified: '2020-05-01T12:00:00',
     size: '2.5 MB',
   },
   {

@@ -63,6 +63,10 @@ button:focus-visible {
   background-color: #edf2f7;
 }
 
+.row-selected {
+  background-color: #1a1a1a;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

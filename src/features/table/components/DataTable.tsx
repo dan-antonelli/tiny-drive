@@ -131,7 +131,10 @@ export default function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && 'selected'}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className=''>
+                    <TableCell
+                      key={cell.id}
+                      className={row.getIsSelected() ? 'bg-gray-200' : ''}
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

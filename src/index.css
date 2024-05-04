@@ -63,6 +63,10 @@ button:focus-visible {
   background-color: #edf2f7;
 }
 
+.rounded-border-md {
+  border-radius: 0.375rem;
+}
+
 ::selection {
   background: #ffe6cc; /* Very light orange */
 }

@@ -63,6 +63,13 @@ button:focus-visible {
   background-color: #edf2f7;
 }
 
+::selection {
+  background: #ffe6cc; /* Very light orange */
+}
+::-moz-selection {
+  background: #ffe6cc; /* Very light orange */
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

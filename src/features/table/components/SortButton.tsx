@@ -14,7 +14,11 @@ const SortButton = ({ column, children }: SortButtonProps) => {
     <Button
       className='text-center text-gray-500'
       variant='secondary'
-      onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+      onClick={() => {
+        // eslint-disable-next-line no-debugger
+        debugger;
+        return column.toggleSorting(column.getIsSorted() === 'asc');
+      }}
     >
       {children}
       <ArrowUpDown className='ml-2 h-4 w-4' />

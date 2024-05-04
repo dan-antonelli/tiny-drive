@@ -73,6 +73,10 @@ const columns: ColumnDef<FileInfo>[] = [
   {
     accessorKey: 'size',
     header: ({ column }) => <SortButton column={column}>Size</SortButton>,
+    cell: ({ row }) => {
+      const size: string = row.getValue('size');
+      return <div className='text-center font-medium'>{size ? size : '—'}</div>;
+    },
   },
   {
     id: 'actions',

@@ -10,6 +10,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { ChevronDown } from 'lucide-react';
 import React from 'react';
 
 import Button from '@/components/shadcn/ui/button';
@@ -77,9 +78,10 @@ export default function DataTable<TData, TValue>({
           <DropdownMenuTrigger asChild>
             <Button
               variant='defaultOutline'
-              className='ml-auto rounded text-defaultButtonForeground'
+              className='ml-auto rounded text-defaultButtonForeground flex justify-between items-center'
             >
               Columns
+              <ChevronDown className='ml-2' size={18} strokeWidth={2} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end' className='bg-white'>

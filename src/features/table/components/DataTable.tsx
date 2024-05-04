@@ -10,6 +10,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { ChevronDown } from 'lucide-react';
 import React from 'react';
 
 import Button from '@/components/shadcn/ui/button';
@@ -71,12 +72,16 @@ export default function DataTable<TData, TValue>({
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             table.getColumn('name')?.setFilterValue(event.target.value)
           }
-          className='max-w-sm rounded text-gray-500'
+          className='max-w-sm rounded text-gray-500 border-defaultOutlineColor'
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant='outline' className='ml-auto rounded'>
+            <Button
+              variant='defaultOutline'
+              className='ml-auto rounded text-defaultButtonForeground flex justify-between items-center'
+            >
               Columns
+              <ChevronDown className='ml-2' size={18} strokeWidth={2} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end' className='bg-white'>
@@ -160,8 +165,8 @@ export default function DataTable<TData, TValue>({
         </div>
         <div className='space-x-2'>
           <Button
-            className='cursor-pointer rounded'
-            variant='outline'
+            className='cursor-pointer rounded text-defaultButtonForeground'
+            variant='defaultOutline'
             size='sm'
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
@@ -169,8 +174,8 @@ export default function DataTable<TData, TValue>({
             Previous
           </Button>
           <Button
-            className='cursor-pointer rounded'
-            variant='outline'
+            className='cursor-pointer rounded text-defaultButtonForeground'
+            variant='defaultOutline'
             size='sm'
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}

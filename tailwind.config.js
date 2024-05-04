@@ -24,6 +24,8 @@ module.exports = {
         '3.2': '0.320rem',
       },
       colors: {
+        defaultOutlineColor: "hsl(240, 7%, 91%)",
+        defaultButtonForeground: "hsl(240, 10%, 4%)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

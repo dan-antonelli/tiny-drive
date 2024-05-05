@@ -10,28 +10,15 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { ChevronDown } from 'lucide-react';
 import React from 'react';
 
+import ColumnTypeFilter from './ColumnTypeFilter';
+import DataTableHeader from './DataTableHeader';
 import Filter from './Filter';
 import Pagination from './Pagination';
 import SelectedRowInfo from './SelectedRowInfo';
 
-import Button from '@/components/shadcn/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from '@/components/shadcn/ui/dropdown-menu';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/Table';
+import { Table, TableBody, TableCell, TableRow } from '@/components/Table';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -70,60 +57,11 @@ export default function DataTable<TData, TValue>({
     <div>
       <div className='flex items-center py-4'>
         <Filter table={table} />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant='defaultOutline'
-              className='ml-auto rounded text-defaultButtonForeground flex justify-between items-center'
-            >
-              Columns
-              <ChevronDown className='ml-2' size={18} strokeWidth={2} />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align='end' className='bg-white'>
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className='capitalize cursor-pointer dropdown-menu-item'
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <ColumnTypeFilter table={table} />
       </div>
       <div className='w-full'>
         <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead
-                      key={header.id}
-                      className={header.id === 'type' ? 'w-px' : 'w-1/8'}
-                    >
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
+          <DataTableHeader table={table} />
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (

@@ -4,15 +4,10 @@ import DateCell from './cell/DateCell';
 import HeaderSelectCell from './cell/HeaderSelectCell';
 import ItemSizeCell from './cell/ItemSizeCell';
 import ItemTypeCell from './cell/ItemTypeCell';
+import MenuCell from './cell/MenuCell';
 import RowSelectCell from './cell/RowSelectCell';
-import DropdownItem from './dropdown/DropdownItem';
-import DropdownTrigger from './dropdown/DropdownTrigger';
 import SortButton from './SortButton';
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-} from '@/components/shadcn/ui/dropdown-menu';
 import { FileInfo } from '@/types/types';
 
 const columns: ColumnDef<FileInfo>[] = [
@@ -48,16 +43,7 @@ const columns: ColumnDef<FileInfo>[] = [
     id: 'actions',
     cell: () => {
       const items = ['Download', 'Rename', 'separator', 'Move to trash'];
-      return (
-        <DropdownMenu>
-          <DropdownTrigger>Columns</DropdownTrigger>
-          <DropdownMenuContent align='end' className='bg-white'>
-            {items.map((item) => (
-              <DropdownItem key={item}>{item}</DropdownItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
+      return <MenuCell items={items} triggerName='Columns' />;
     },
   },
 ];

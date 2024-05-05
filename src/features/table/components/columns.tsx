@@ -1,8 +1,8 @@
 import { ColumnDef } from '@tanstack/react-table';
-import { File as FileIcon, Folder as FolderIcon } from 'lucide-react';
 
 import DateCell from './cell/DateCell';
 import ItemSizeCell from './cell/ItemSizeCell';
+import ItemTypeCell from './cell/ItemTypeCell';
 import DropdownItem from './dropdown/DropdownItem';
 import DropdownTrigger from './dropdown/DropdownTrigger';
 import SortButton from './SortButton';
@@ -41,9 +41,7 @@ const columns: ColumnDef<FileInfo>[] = [
   {
     accessorKey: 'type',
     header: ({ column }) => <SortButton column={column}>Type</SortButton>,
-    cell: ({ row }) => {
-      return row.original.type === 'file' ? <FileIcon /> : <FolderIcon />;
-    },
+    cell: ({ row }) => <ItemTypeCell type={row.original.type} />,
   },
   {
     accessorKey: 'name',

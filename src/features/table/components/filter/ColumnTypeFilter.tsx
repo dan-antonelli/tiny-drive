@@ -1,6 +1,6 @@
 import { ChevronDown } from 'lucide-react';
 
-import { TableProps } from '../types/types';
+import { TableProps } from '../../types/types';
 
 import Button from '@/components/shadcn/ui/button';
 import {

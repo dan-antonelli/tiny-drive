@@ -11,12 +11,13 @@ import {
 } from '@tanstack/react-table';
 import React from 'react';
 
-import ColumnTypeFilter from './ColumnTypeFilter';
+import ColumnTypeFilter from '../filter/ColumnTypeFilter';
+import Filter from '../filter/Filter';
+import Pagination from '../Pagination';
+import SelectedRowInfo from '../SelectedRowInfo';
+
 import DataTableBody from './DataTableBody';
 import DataTableHeader from './DataTableHeader';
-import Filter from './Filter';
-import Pagination from './Pagination';
-import SelectedRowInfo from './SelectedRowInfo';
 
 import { Table } from '@/components/Table';
 

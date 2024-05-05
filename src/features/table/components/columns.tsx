@@ -3,8 +3,8 @@ import { File as FileIcon, Folder as FolderIcon } from 'lucide-react';
 
 import formatDate from '../utils/formatDate';
 
-import DropdownItem from './DropdownItem';
-import DropdownTrigger from './DropdownTrigger';
+import DropdownItem from './dropdown/DropdownItem';
+import DropdownTrigger from './dropdown/DropdownTrigger';
 import SortButton from './SortButton';
 
 import { Checkbox } from '@/components/shadcn/ui/checkbox';

@@ -13,18 +13,12 @@ import {
 import React from 'react';
 
 import ColumnTypeFilter from './ColumnTypeFilter';
+import DataTableHeader from './DataTableHeader';
 import Filter from './Filter';
 import Pagination from './Pagination';
 import SelectedRowInfo from './SelectedRowInfo';
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/Table';
+import { Table, TableBody, TableCell, TableRow } from '@/components/Table';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -67,27 +61,7 @@ export default function DataTable<TData, TValue>({
       </div>
       <div className='w-full'>
         <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead
-                      key={header.id}
-                      className={header.id === 'type' ? 'w-px' : 'w-1/8'}
-                    >
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
+          <DataTableHeader table={table} />
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (

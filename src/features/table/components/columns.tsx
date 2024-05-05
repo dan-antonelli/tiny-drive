@@ -7,6 +7,7 @@ import {
 
 import formatDate from '../utils/formatDate';
 
+import DropdownItem from './DropdownItem';
 import SortButton from './SortButton';
 
 import Button from '@/components/shadcn/ui/button';
@@ -14,7 +15,6 @@ import { Checkbox } from '@/components/shadcn/ui/checkbox';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/shadcn/ui/dropdown-menu';
@@ -89,16 +89,10 @@ const columns: ColumnDef<FileInfo>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end' className='bg-white'>
-            <DropdownMenuItem className='dropdown-menu-item'>
-              Download
-            </DropdownMenuItem>
+            <DropdownItem>Download</DropdownItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className='dropdown-menu-item'>
-              Rename
-            </DropdownMenuItem>
-            <DropdownMenuItem className='dropdown-menu-item'>
-              Move to trash
-            </DropdownMenuItem>
+            <DropdownItem>Rename</DropdownItem>
+            <DropdownItem>Move to trash</DropdownItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

@@ -1,13 +1,14 @@
 import { ColumnDef } from '@tanstack/react-table';
 
 import DateCell from './cell/DateCell';
+import HeaderSelectCell from './cell/HeaderSelectCell';
 import ItemSizeCell from './cell/ItemSizeCell';
 import ItemTypeCell from './cell/ItemTypeCell';
+import RowSelectCell from './cell/RowSelectCell';
 import DropdownItem from './dropdown/DropdownItem';
 import DropdownTrigger from './dropdown/DropdownTrigger';
 import SortButton from './SortButton';
 
-import { Checkbox } from '@/components/shadcn/ui/checkbox';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,24 +18,8 @@ import { FileInfo } from '@/types/types';
 const columns: ColumnDef<FileInfo>[] = [
   {
     id: 'select',
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && 'indeterminate')
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label='Select all'
-        position='header'
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label='Select row'
-      />
-    ),
+    header: ({ table }) => <HeaderSelectCell table={table} />,
+    cell: ({ row }) => <RowSelectCell row={row} />,
     enableSorting: false,
     enableHiding: false,
   },

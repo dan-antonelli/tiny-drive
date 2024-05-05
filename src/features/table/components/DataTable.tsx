@@ -3,7 +3,6 @@ import {
   ColumnFiltersState,
   SortingState,
   VisibilityState,
-  flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -19,7 +18,7 @@ import Filter from './Filter';
 import Pagination from './Pagination';
 import SelectedRowInfo from './SelectedRowInfo';
 
-import { Table, TableBody, TableCell, TableRow } from '@/components/Table';
+import { Table } from '@/components/Table';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

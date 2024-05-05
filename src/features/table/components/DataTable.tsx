@@ -13,6 +13,8 @@ import {
 import { ChevronDown } from 'lucide-react';
 import React from 'react';
 
+import Filter from './Filter';
+
 import Button from '@/components/shadcn/ui/button';
 import {
   DropdownMenu,
@@ -20,7 +22,6 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from '@/components/shadcn/ui/dropdown-menu';
-import { Input } from '@/components/shadcn/ui/input';
 import {
   Table,
   TableBody,
@@ -66,14 +67,7 @@ export default function DataTable<TData, TValue>({
   return (
     <div>
       <div className='flex items-center py-4'>
-        <Input
-          placeholder='Filter items by name...'
-          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            table.getColumn('name')?.setFilterValue(event.target.value)
-          }
-          className='max-w-sm rounded text-gray-500 border-defaultOutlineColor'
-        />
+        <Filter table={table} />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button

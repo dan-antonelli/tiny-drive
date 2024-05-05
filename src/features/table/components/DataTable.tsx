@@ -3,7 +3,6 @@ import {
   ColumnFiltersState,
   SortingState,
   VisibilityState,
-  flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -13,12 +12,13 @@ import {
 import React from 'react';
 
 import ColumnTypeFilter from './ColumnTypeFilter';
+import DataTableBody from './DataTableBody';
 import DataTableHeader from './DataTableHeader';
 import Filter from './Filter';
 import Pagination from './Pagination';
 import SelectedRowInfo from './SelectedRowInfo';
 
-import { Table, TableBody, TableCell, TableRow } from '@/components/Table';
+import { Table } from '@/components/Table';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -62,34 +62,7 @@ export default function DataTable<TData, TValue>({
       <div className='w-full'>
         <Table>
           <DataTableHeader table={table} />
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell
-                      key={cell.id}
-                      className={row.getIsSelected() ? 'bg-gray-200' : ''}
-                    >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className='h-24'>
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
+          <DataTableBody table={table} columns={columns} />
         </Table>
       </div>
       <div className='flex items-center justify-between space-x-4 py-4'>

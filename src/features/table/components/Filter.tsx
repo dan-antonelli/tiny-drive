@@ -1,12 +1,8 @@
-import { Table } from '@tanstack/react-table';
+import { TableProps } from '../types/types';
 
 import { Input } from '@/components/shadcn/ui/input';
 
-interface SearchInputProps<TData> {
-  table: Table<TData>;
-}
-
-export default function Filter<TData>({ table }: SearchInputProps<TData>) {
+export default function Filter<TData>({ table }: TableProps<TData>) {
   return (
     <Input
       placeholder='Filter items by name...'

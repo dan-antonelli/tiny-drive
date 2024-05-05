@@ -1,12 +1,8 @@
-import { Table } from '@tanstack/react-table';
+import { TableProps } from '../types/types';
 
 import Button from '@/components/shadcn/ui/button';
 
-interface PaginationProps<TData> {
-  table: Table<TData>;
-}
-
-export default function Pagination<TData>({ table }: PaginationProps<TData>) {
+export default function Pagination<TData>({ table }: TableProps<TData>) {
   return (
     <div className='space-x-2'>
       <Button

@@ -5,6 +5,7 @@ import formatDate from '../utils/formatDate';
 
 import DropdownItem from './dropdown/DropdownItem';
 import DropdownTrigger from './dropdown/DropdownTrigger';
+import ItemSizeCell from './ItemSizeCell';
 import SortButton from './SortButton';
 
 import { Checkbox } from '@/components/shadcn/ui/checkbox';
@@ -66,10 +67,7 @@ const columns: ColumnDef<FileInfo>[] = [
   {
     accessorKey: 'size',
     header: ({ column }) => <SortButton column={column}>Size</SortButton>,
-    cell: ({ row }) => {
-      const size: string = row.getValue('size');
-      return <div className='text-center font-medium'>{size ? size : '—'}</div>;
-    },
+    cell: ({ row }) => <ItemSizeCell size={row.getValue('size')} />,
   },
   {
     id: 'actions',

@@ -31,6 +31,7 @@ const columns: ColumnDef<FileInfo>[] = [
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label='Select all'
+        position='header'
       />
     ),
     cell: ({ row }) => (

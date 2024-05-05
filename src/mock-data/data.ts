@@ -5,7 +5,7 @@ const data: FileInfo[] = [
   {
     id: '728ed52f',
     type: 'file',
-    name: 'example.pdf',
+    name: 'something.pdf',
     lastModified: '2021-06-02T12:00:00',
     size: '2.5 MB',
   },

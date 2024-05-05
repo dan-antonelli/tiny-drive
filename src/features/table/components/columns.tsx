@@ -1,22 +1,16 @@
 import { ColumnDef } from '@tanstack/react-table';
-import {
-  File as FileIcon,
-  Folder as FolderIcon,
-  MoreHorizontal,
-} from 'lucide-react';
+import { File as FileIcon, Folder as FolderIcon } from 'lucide-react';
 
 import formatDate from '../utils/formatDate';
 
 import DropdownItem from './DropdownItem';
+import DropdownTrigger from './DropdownTrigger';
 import SortButton from './SortButton';
 
-import Button from '@/components/shadcn/ui/button';
 import { Checkbox } from '@/components/shadcn/ui/checkbox';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
 } from '@/components/shadcn/ui/dropdown-menu';
 import { FileInfo } from '@/types/types';
 
@@ -80,19 +74,14 @@ const columns: ColumnDef<FileInfo>[] = [
   {
     id: 'actions',
     cell: () => {
+      const items = ['Download', 'Rename', 'separator', 'Move to trash'];
       return (
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant='default' className='h-8 w-8 p-0'>
-              <span className='sr-only'>Open menu</span>
-              <MoreHorizontal className='h-4 w-4' />
-            </Button>
-          </DropdownMenuTrigger>
+          <DropdownTrigger>Columns</DropdownTrigger>
           <DropdownMenuContent align='end' className='bg-white'>
-            <DropdownItem>Download</DropdownItem>
-            <DropdownMenuSeparator />
-            <DropdownItem>Rename</DropdownItem>
-            <DropdownItem>Move to trash</DropdownItem>
+            {items.map((item) => (
+              <DropdownItem key={item}>{item}</DropdownItem>
+            ))}
           </DropdownMenuContent>
         </DropdownMenu>
       );

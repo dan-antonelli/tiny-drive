@@ -14,6 +14,8 @@ import { ChevronDown } from 'lucide-react';
 import React from 'react';
 
 import Filter from './Filter';
+import Pagination from './Pagination';
+import SelectedRowInfo from './SelectedRowInfo';
 
 import Button from '@/components/shadcn/ui/button';
 import {
@@ -153,30 +155,8 @@ export default function DataTable<TData, TValue>({
         </Table>
       </div>
       <div className='flex items-center justify-between space-x-4 py-4'>
-        <div className='text-sm pl-8 text-gray-500'>
-          {table.getFilteredSelectedRowModel().rows.length} of{' '}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-        <div className='space-x-2'>
-          <Button
-            className='cursor-pointer rounded text-defaultButtonForeground'
-            variant='defaultOutline'
-            size='sm'
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            className='cursor-pointer rounded text-defaultButtonForeground'
-            variant='defaultOutline'
-            size='sm'
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
+        <SelectedRowInfo table={table} />
+        <Pagination table={table} />
       </div>
     </div>
   );

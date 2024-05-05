@@ -1,11 +1,10 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { File as FileIcon, Folder as FolderIcon } from 'lucide-react';
 
-import formatDate from '../utils/formatDate';
-
+import DateCell from './cell/DateCell';
+import ItemSizeCell from './cell/ItemSizeCell';
 import DropdownItem from './dropdown/DropdownItem';
 import DropdownTrigger from './dropdown/DropdownTrigger';
-import ItemSizeCell from './ItemSizeCell';
 import SortButton from './SortButton';
 
 import { Checkbox } from '@/components/shadcn/ui/checkbox';
@@ -55,14 +54,7 @@ const columns: ColumnDef<FileInfo>[] = [
     header: ({ column }) => (
       <SortButton column={column}>Last modified</SortButton>
     ),
-    cell: ({ row }) => {
-      const lastModified: string = row.getValue('lastModified');
-      return (
-        <div className='text-center font-medium'>
-          {formatDate(lastModified)}
-        </div>
-      );
-    },
+    cell: ({ row }) => <DateCell date={row.getValue('lastModified')} />,
   },
   {
     accessorKey: 'size',

@@ -1,0 +1,32 @@
+import { Table } from '@tanstack/react-table';
+
+import Button from '@/components/shadcn/ui/button';
+
+interface PaginationProps<TData> {
+  table: Table<TData>;
+}
+
+export default function Pagination<TData>({ table }: PaginationProps<TData>) {
+  return (
+    <div className='space-x-2'>
+      <Button
+        className='cursor-pointer rounded text-defaultButtonForeground'
+        variant='defaultOutline'
+        size='sm'
+        onClick={() => table.previousPage()}
+        disabled={!table.getCanPreviousPage()}
+      >
+        Previous
+      </Button>
+      <Button
+        className='cursor-pointer rounded text-defaultButtonForeground'
+        variant='defaultOutline'
+        size='sm'
+        onClick={() => table.nextPage()}
+        disabled={!table.getCanNextPage()}
+      >
+        Next
+      </Button>
+    </div>
+  );
+}

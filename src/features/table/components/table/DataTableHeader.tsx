@@ -1,6 +1,6 @@
 import { flexRender } from '@tanstack/react-table';
 
-import { TableProps } from '../types/types';
+import { TableProps } from '../../types/types';
 
 import { TableHead, TableHeader, TableRow } from '@/components/Table';
 

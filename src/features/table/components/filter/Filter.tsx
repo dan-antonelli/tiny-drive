@@ -1,4 +1,4 @@
-import { TableProps } from '../types/types';
+import { TableProps } from '../../types/types';
 
 import { Input } from '@/components/shadcn/ui/input';
 

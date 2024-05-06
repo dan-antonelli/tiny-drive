@@ -1,49 +1,27 @@
 import { ColumnDef } from '@tanstack/react-table';
-import { File as FileIcon, Folder as FolderIcon } from 'lucide-react';
 
 import DateCell from './cell/DateCell';
+import HeaderSelectCell from './cell/HeaderSelectCell';
 import ItemSizeCell from './cell/ItemSizeCell';
-import DropdownItem from './dropdown/DropdownItem';
-import DropdownTrigger from './dropdown/DropdownTrigger';
+import ItemTypeCell from './cell/ItemTypeCell';
+import MenuCell from './cell/MenuCell';
+import RowSelectCell from './cell/RowSelectCell';
 import SortButton from './SortButton';
 
-import { Checkbox } from '@/components/shadcn/ui/checkbox';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-} from '@/components/shadcn/ui/dropdown-menu';
 import { FileInfo } from '@/types/types';
 
 const columns: ColumnDef<FileInfo>[] = [
   {
     id: 'select',
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && 'indeterminate')
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label='Select all'
-        position='header'
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label='Select row'
-      />
-    ),
+    header: ({ table }) => <HeaderSelectCell table={table} />,
+    cell: ({ row }) => <RowSelectCell row={row} />,
     enableSorting: false,
     enableHiding: false,
   },
   {
     accessorKey: 'type',
     header: ({ column }) => <SortButton column={column}>Type</SortButton>,
-    cell: ({ row }) => {
-      return row.original.type === 'file' ? <FileIcon /> : <FolderIcon />;
-    },
+    cell: ({ row }) => <ItemTypeCell type={row.original.type} />,
   },
   {
     accessorKey: 'name',
@@ -65,16 +43,7 @@ const columns: ColumnDef<FileInfo>[] = [
     id: 'actions',
     cell: () => {
       const items = ['Download', 'Rename', 'separator', 'Move to trash'];
-      return (
-        <DropdownMenu>
-          <DropdownTrigger>Columns</DropdownTrigger>
-          <DropdownMenuContent align='end' className='bg-white'>
-            {items.map((item) => (
-              <DropdownItem key={item}>{item}</DropdownItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
+      return <MenuCell items={items} triggerName='Columns' />;
     },
   },
 ];

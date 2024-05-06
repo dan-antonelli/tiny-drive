@@ -13,7 +13,13 @@ import { FileInfo } from '@/types/types';
 const columns: ColumnDef<FileInfo>[] = [
   {
     id: 'select',
-    header: ({ table }) => <HeaderSelectCell table={table} />,
+    header: ({ table }) => (
+      <HeaderSelectCell
+        getIsAllPageRowsSelected={table.getIsAllPageRowsSelected}
+        getIsSomePageRowsSelected={table.getIsSomePageRowsSelected}
+        toggleAllPageRowsSelected={table.toggleAllPageRowsSelected}
+      />
+    ),
     cell: ({ row }) => <RowSelectCell row={row} />,
     enableSorting: false,
     enableHiding: false,
@@ -43,7 +49,7 @@ const columns: ColumnDef<FileInfo>[] = [
     id: 'actions',
     cell: () => {
       const items = ['Download', 'Rename', 'separator', 'Move to trash'];
-      return <MenuCell items={items} triggerName='Columns' />;
+      return <MenuCell items={items} triggerName='Menu' />;
     },
   },
 ];

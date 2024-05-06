@@ -1,15 +1,25 @@
-import { TableProps } from '../../types/types';
+import { Table } from '@tanstack/react-table';
 
 import { Checkbox } from '@/components/shadcn/ui/checkbox';
 
-export default function HeaderSelectCell<TData>({ table }: TableProps<TData>) {
+interface HeaderSelectCellProps<TData> extends Partial<Table<TData>> {
+  getIsAllPageRowsSelected: () => boolean;
+  getIsSomePageRowsSelected: () => boolean;
+  toggleAllPageRowsSelected: (value?: boolean) => void;
+}
+
+export default function HeaderSelectCell<TData>({
+  getIsAllPageRowsSelected,
+  getIsSomePageRowsSelected,
+  toggleAllPageRowsSelected,
+}: HeaderSelectCellProps<TData>) {
   return (
     <Checkbox
       checked={
-        table.getIsAllPageRowsSelected() ||
-        (table.getIsSomePageRowsSelected() && 'indeterminate')
+        getIsAllPageRowsSelected() ||
+        (getIsSomePageRowsSelected() && 'indeterminate')
       }
-      onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+      onCheckedChange={(value) => toggleAllPageRowsSelected(!!value)}
       aria-label='Select all'
       position='header'
     />

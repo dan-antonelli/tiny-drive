@@ -5,5 +5,5 @@ export default function formatDate(date: string): string {
     month: 'short',
     day: 'numeric',
   };
-  return new Date(date).toLocaleDateString(undefined, options);
+  return new Date(date).toLocaleDateString('en-US', options);
 }

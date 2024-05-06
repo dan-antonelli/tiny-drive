@@ -1,0 +1,22 @@
+## Features (WIP)
+
+- create files/folders
+- upload files/folders
+- download files/folders
+- display file structure
+- trash items
+- remove items permanently
+- restore from trash
+- rename items
+- drag and drop
+- move items
+- select item
+- select items
+- auth
+- user rights
+- demo mode (delete stuff after logout)
+- limit uploads: one user can upload only up to a certain size, and there's a collective size limit to uploads
+- delete everything at certain intervals
+- logout after a while
+- search
+- sort

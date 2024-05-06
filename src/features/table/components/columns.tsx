@@ -13,7 +13,13 @@ import { FileInfo } from '@/types/types';
 const columns: ColumnDef<FileInfo>[] = [
   {
     id: 'select',
-    header: ({ table }) => <HeaderSelectCell table={table} />,
+    header: ({ table }) => (
+      <HeaderSelectCell
+        getIsAllPageRowsSelected={table.getIsAllPageRowsSelected}
+        getIsSomePageRowsSelected={table.getIsSomePageRowsSelected}
+        toggleAllPageRowsSelected={table.toggleAllPageRowsSelected}
+      />
+    ),
     cell: ({ row }) => <RowSelectCell row={row} />,
     enableSorting: false,
     enableHiding: false,

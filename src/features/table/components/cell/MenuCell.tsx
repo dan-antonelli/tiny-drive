@@ -1,9 +1,10 @@
-import DropdownItem from '../dropdown/DropdownItem';
 import DropdownTrigger from '../dropdown/DropdownTrigger';
 
 import {
   DropdownMenu,
+  DropdownMenuItem,
   DropdownMenuContent,
+  DropdownMenuSeparator,
 } from '@/components/shadcn/ui/dropdown-menu';
 
 interface MenuCellProps {
@@ -11,14 +12,20 @@ interface MenuCellProps {
   items: string[];
 }
 
-export default function MenuCell({ triggerName, items }: MenuCellProps) {
+export default function MenuCell({ items, triggerName }: MenuCellProps) {
   return (
     <DropdownMenu>
       <DropdownTrigger>{triggerName}</DropdownTrigger>
       <DropdownMenuContent align='end' className='bg-white'>
-        {items.map((item) => (
-          <DropdownItem key={item}>{item}</DropdownItem>
-        ))}
+        {items.map((item) =>
+          item === 'separator' ? (
+            <DropdownMenuSeparator key={item} />
+          ) : (
+            <DropdownMenuItem key={item} className='dropdown-menu-item'>
+              {item}
+            </DropdownMenuItem>
+          )
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );

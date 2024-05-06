@@ -49,7 +49,7 @@ const columns: ColumnDef<FileInfo>[] = [
     id: 'actions',
     cell: () => {
       const items = ['Download', 'Rename', 'separator', 'Move to trash'];
-      return <MenuCell items={items} triggerName='Columns' />;
+      return <MenuCell items={items} triggerName='Menu' />;
     },
   },
 ];

@@ -58,7 +58,7 @@ export default function DataTable<TData, TValue>({
     <div>
       <div className='flex items-center py-4'>
         <Filter table={table} />
-        <ColumnTypeFilter table={table} />
+        <ColumnTypeFilter getAllColumns={table.getAllColumns} />
       </div>
       <div className='w-full'>
         <Table>

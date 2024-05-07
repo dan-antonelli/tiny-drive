@@ -1,4 +1,4 @@
-import { Column, Table } from '@tanstack/react-table';
+import { Column } from '@tanstack/react-table';
 import { ChevronDown } from 'lucide-react';
 
 import Button from '@/components/shadcn/ui/button';
@@ -9,12 +9,12 @@ import {
   DropdownMenuTrigger,
 } from '@/components/shadcn/ui/dropdown-menu';
 
-interface ColumnTypeFilterProps<TData> extends Partial<Table<TData>> {
-  getAllColumns: () => Column<TData, unknown>[];
+interface ColumnTypeFilterProps<TData> {
+  columns: Column<TData, unknown>[];
 }
 
 export default function ColumnTypeFilter<TData>({
-  getAllColumns,
+  columns,
 }: ColumnTypeFilterProps<TData>) {
   return (
     <DropdownMenu>
@@ -28,7 +28,7 @@ export default function ColumnTypeFilter<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' className='bg-white'>
-        {getAllColumns()
+        {columns
           .filter((column) => column.getCanHide())
           .map((column) => {
             return (

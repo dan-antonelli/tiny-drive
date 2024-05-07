@@ -2,6 +2,7 @@ import { Table } from '@tanstack/react-table';
 
 import { Checkbox } from '@/components/shadcn/ui/checkbox';
 
+// TODO: rewrite to call functions from the outside
 interface HeaderSelectCellProps<TData> extends Partial<Table<TData>> {
   getIsAllPageRowsSelected: () => boolean;
   getIsSomePageRowsSelected: () => boolean;

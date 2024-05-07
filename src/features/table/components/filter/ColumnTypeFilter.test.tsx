@@ -43,4 +43,39 @@ describe('ColumnTypeFilter', () => {
 
     expect(mockColumns[0].toggleVisibility).toHaveBeenCalled();
   });
+
+  it('does not display columns that cannot be hidden', async () => {
+    render(<ColumnTypeFilter columns={mockColumns} />);
+
+    const trigger = screen.getByRole('button', { name: /Columns/i });
+    await userEvent.click(trigger);
+
+    const testColumn2 = screen.queryByRole('menuitemcheckbox', {
+      name: /testColumn2/i,
+    });
+    expect(testColumn2).not.toBeInTheDocument();
+  });
+
+  it('does not call toggleVisibility when a column that cannot be hidden is clicked', async () => {
+    render(<ColumnTypeFilter columns={mockColumns} />);
+
+    const trigger = screen.getByRole('button', { name: /Columns/i });
+    await userEvent.click(trigger);
+
+    const testColumn2 = screen.queryByRole('menuitemcheckbox', {
+      name: /testColumn2/i,
+    });
+    if (testColumn2) {
+      await userEvent.click(testColumn2);
+    }
+
+    expect(mockColumns[1].toggleVisibility).not.toHaveBeenCalled();
+  });
+
+  it('does not display the dropdown menu when the Columns button is not clicked', () => {
+    render(<ColumnTypeFilter columns={mockColumns} />);
+
+    const dropdownMenu = screen.queryByRole('menu');
+    expect(dropdownMenu).not.toBeInTheDocument();
+  });
 });

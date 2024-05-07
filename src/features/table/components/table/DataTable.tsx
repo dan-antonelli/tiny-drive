@@ -57,7 +57,13 @@ export default function DataTable<TData, TValue>({
   return (
     <div>
       <div className='flex items-center py-4'>
-        <Filter table={table} />
+        <Filter
+          placeholder='Filter items by name...'
+          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            table.getColumn('name')?.setFilterValue(event.target.value)
+          }
+        />
         <ColumnTypeFilter columns={table.getAllColumns()} />
       </div>
       <div className='w-full'>

@@ -1,15 +1,17 @@
-import { TableProps } from '../../types/types';
-
 import { Input } from '@/components/shadcn/ui/input';
 
-export default function Filter<TData>({ table }: TableProps<TData>) {
+interface FilterProps {
+  placeholder: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function Filter({ placeholder, value, onChange }: FilterProps) {
   return (
     <Input
-      placeholder='Filter items by name...'
-      value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-        table.getColumn('name')?.setFilterValue(event.target.value)
-      }
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
       className='max-w-sm rounded text-gray-500 border-defaultOutlineColor'
     />
   );

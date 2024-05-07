@@ -22,7 +22,12 @@ const columns: ColumnDef<FileInfo>[] = [
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
       />
     ),
-    cell: ({ row }) => <RowSelectCell row={row} />,
+    cell: ({ row }) => (
+      <RowSelectCell
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+      />
+    ),
     enableSorting: false,
     enableHiding: false,
   },

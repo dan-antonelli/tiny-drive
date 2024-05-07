@@ -1,8 +1,7 @@
+import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
 
 import HeaderSelectCell from './HeaderSelectCell';
-
-import '@testing-library/jest-dom';
 
 describe('HeaderSelectCell', () => {
   let mockToggleAllPageRowsSelected: jest.Mock;

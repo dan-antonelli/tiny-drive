@@ -1,26 +1,21 @@
+import { CheckedState } from '@radix-ui/react-checkbox';
 import { Table } from '@tanstack/react-table';
 
 import { Checkbox } from '@/components/shadcn/ui/checkbox';
 
-// TODO: rewrite to call functions from the outside
 interface HeaderSelectCellProps<TData> extends Partial<Table<TData>> {
-  getIsAllPageRowsSelected: () => boolean;
-  getIsSomePageRowsSelected: () => boolean;
-  toggleAllPageRowsSelected: (value?: boolean) => void;
+  checked: CheckedState | undefined;
+  onCheckedChange: (value?: CheckedState) => void;
 }
 
 export default function HeaderSelectCell<TData>({
-  getIsAllPageRowsSelected,
-  getIsSomePageRowsSelected,
-  toggleAllPageRowsSelected,
+  checked,
+  onCheckedChange,
 }: HeaderSelectCellProps<TData>) {
   return (
     <Checkbox
-      checked={
-        getIsAllPageRowsSelected() ||
-        (getIsSomePageRowsSelected() && 'indeterminate')
-      }
-      onCheckedChange={(value) => toggleAllPageRowsSelected(!!value)}
+      checked={checked}
+      onCheckedChange={onCheckedChange}
       aria-label='Select all'
       position='header'
     />

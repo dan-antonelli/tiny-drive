@@ -15,9 +15,11 @@ const columns: ColumnDef<FileInfo>[] = [
     id: 'select',
     header: ({ table }) => (
       <HeaderSelectCell
-        getIsAllPageRowsSelected={table.getIsAllPageRowsSelected}
-        getIsSomePageRowsSelected={table.getIsSomePageRowsSelected}
-        toggleAllPageRowsSelected={table.toggleAllPageRowsSelected}
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && 'indeterminate')
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
       />
     ),
     cell: ({ row }) => <RowSelectCell row={row} />,

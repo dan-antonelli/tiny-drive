@@ -77,7 +77,12 @@ export default function DataTable<TData, TValue>({
           filteredSelectedRows={table.getSelectedRowModel().rows}
           filteredRowModelRows={table.getFilteredRowModel().rows}
         />
-        <Pagination table={table} />
+        <Pagination
+          previousPage={table.previousPage}
+          nextPage={table.nextPage}
+          isPreviousDisabled={!table.getCanPreviousPage()}
+          isNextDisabled={!table.getCanNextPage()}
+        />
       </div>
     </div>
   );

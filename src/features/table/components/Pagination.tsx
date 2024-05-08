@@ -1,16 +1,26 @@
-import { TableProps } from '../types/types';
-
 import Button from '@/components/shadcn/ui/button';
 
-export default function Pagination<TData>({ table }: TableProps<TData>) {
+interface PaginationProps {
+  previousPage: () => void;
+  nextPage: () => void;
+  isPreviousDisabled: boolean;
+  isNextDisabled: boolean;
+}
+
+export default function Pagination({
+  previousPage,
+  nextPage,
+  isPreviousDisabled,
+  isNextDisabled,
+}: PaginationProps) {
   return (
     <div className='space-x-2'>
       <Button
         className='cursor-pointer rounded text-defaultButtonForeground'
         variant='defaultOutline'
         size='sm'
-        onClick={() => table.previousPage()}
-        disabled={!table.getCanPreviousPage()}
+        onClick={previousPage}
+        disabled={isPreviousDisabled}
       >
         Previous
       </Button>
@@ -18,8 +28,8 @@ export default function Pagination<TData>({ table }: TableProps<TData>) {
         className='cursor-pointer rounded text-defaultButtonForeground'
         variant='defaultOutline'
         size='sm'
-        onClick={() => table.nextPage()}
-        disabled={!table.getCanNextPage()}
+        onClick={nextPage}
+        disabled={isNextDisabled}
       >
         Next
       </Button>

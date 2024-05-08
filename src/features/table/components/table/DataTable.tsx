@@ -73,7 +73,10 @@ export default function DataTable<TData, TValue>({
         </Table>
       </div>
       <div className='flex items-center justify-between space-x-4 py-4'>
-        <SelectedRowInfo table={table} />
+        <SelectedRowInfo
+          filteredSelectedRows={table.getSelectedRowModel().rows}
+          filteredRowModelRows={table.getFilteredRowModel().rows}
+        />
         <Pagination table={table} />
       </div>
     </div>

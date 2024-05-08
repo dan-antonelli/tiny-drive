@@ -1,9 +1,10 @@
+import '@testing-library/jest-dom';
+
 import { render, screen } from '@testing-library/react';
 
 import formatDate from '../../utils/formatDate';
 
 import DateCell from './DateCell';
-import '@testing-library/jest-dom';
 
 jest.mock('../../utils/formatDate');
 

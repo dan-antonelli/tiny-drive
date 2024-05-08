@@ -1,10 +1,18 @@
-import { TableProps } from '../types/types';
+import { Row } from '@tanstack/react-table';
 
-export default function SelectedRowInfo<TData>({ table }: TableProps<TData>) {
+interface SelectedRowInfoProps<TData> {
+  filteredSelectedRows: Row<TData>[];
+  filteredRowModelRows: Row<TData>[];
+}
+
+export default function SelectedRowInfo<TData>({
+  filteredSelectedRows,
+  filteredRowModelRows,
+}: SelectedRowInfoProps<TData>) {
   return (
     <div className='text-sm pl-8 text-gray-500'>
-      {table.getFilteredSelectedRowModel().rows.length} of{' '}
-      {table.getFilteredRowModel().rows.length} row(s) selected.
+      {filteredSelectedRows.length} of {filteredRowModelRows.length} row(s)
+      selected.
     </div>
   );
 }

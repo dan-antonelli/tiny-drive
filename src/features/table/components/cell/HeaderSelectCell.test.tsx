@@ -1,76 +1,91 @@
-import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+
+import { render, screen } from '@testing-library/react';
 
 import HeaderSelectCell from './HeaderSelectCell';
 
-import '@testing-library/jest-dom';
-
 describe('HeaderSelectCell', () => {
-  let mockToggleAllPageRowsSelected: jest.Mock;
+  const mockTable = {
+    getIsAllPageRowsSelected: jest.fn() as jest.MockedFunction<() => boolean>,
+    getIsSomePageRowsSelected: jest.fn() as jest.MockedFunction<() => boolean>,
+    toggleAllPageRowsSelected: jest.fn() as jest.MockedFunction<
+      (value: boolean) => void
+    >,
+  };
 
-  beforeEach(() => {
-    mockToggleAllPageRowsSelected = jest.fn();
-  });
-
-  test('renders without crashing', () => {
-    const { getByLabelText } = render(
+  it('renders correctly', () => {
+    render(
       <HeaderSelectCell
-        getIsAllPageRowsSelected={() => false}
-        getIsSomePageRowsSelected={() => false}
-        toggleAllPageRowsSelected={mockToggleAllPageRowsSelected}
+        checked={
+          mockTable.getIsAllPageRowsSelected() ||
+          (mockTable.getIsSomePageRowsSelected() && 'indeterminate')
+        }
+        onCheckedChange={(value) =>
+          mockTable.toggleAllPageRowsSelected(!!value)
+        }
       />
     );
 
-    expect(getByLabelText('Select all')).toBeInTheDocument();
+    const checkbox = screen.getByRole('checkbox', { name: /Select all/i });
+    expect(checkbox).toBeInTheDocument();
   });
 
-  test('calls toggleAllPageRowsSelected on checkbox click', () => {
-    const { getByLabelText } = render(
+  it('checks the checkbox when all rows are selected', () => {
+    mockTable.getIsAllPageRowsSelected.mockReturnValue(true);
+
+    render(
       <HeaderSelectCell
-        getIsAllPageRowsSelected={() => false}
-        getIsSomePageRowsSelected={() => false}
-        toggleAllPageRowsSelected={mockToggleAllPageRowsSelected}
+        checked={
+          mockTable.getIsAllPageRowsSelected() ||
+          (mockTable.getIsSomePageRowsSelected() && 'indeterminate')
+        }
+        onCheckedChange={(value) =>
+          mockTable.toggleAllPageRowsSelected(!!value)
+        }
       />
     );
 
-    fireEvent.click(getByLabelText('Select all'));
-
-    expect(mockToggleAllPageRowsSelected).toHaveBeenCalled();
+    const checkbox = screen.getByRole('checkbox', { name: /Select all/i });
+    expect(checkbox).toBeChecked();
   });
 
-  test('checkbox is checked when all rows are selected', () => {
-    const { getByLabelText } = render(
+  it('sets the checkbox to indeterminate when some rows are selected', () => {
+    mockTable.getIsAllPageRowsSelected.mockReturnValue(false);
+    mockTable.getIsSomePageRowsSelected.mockReturnValue(true);
+
+    render(
       <HeaderSelectCell
-        getIsAllPageRowsSelected={() => true}
-        getIsSomePageRowsSelected={() => false}
-        toggleAllPageRowsSelected={mockToggleAllPageRowsSelected}
+        checked={
+          mockTable.getIsAllPageRowsSelected() ||
+          (mockTable.getIsSomePageRowsSelected() && 'indeterminate')
+        }
+        onCheckedChange={(value) =>
+          mockTable.toggleAllPageRowsSelected(!!value)
+        }
       />
     );
 
-    expect(getByLabelText('Select all')).toBeChecked();
+    const checkbox = screen.getByRole('checkbox', { name: /Select all/i });
+    expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
   });
 
-  test('checkbox is unchecked when no rows are selected', () => {
-    const { getByLabelText } = render(
+  it('unchecks the checkbox when no rows are selected', () => {
+    mockTable.getIsAllPageRowsSelected.mockReturnValue(false);
+    mockTable.getIsSomePageRowsSelected.mockReturnValue(false);
+
+    render(
       <HeaderSelectCell
-        getIsAllPageRowsSelected={() => false}
-        getIsSomePageRowsSelected={() => false}
-        toggleAllPageRowsSelected={mockToggleAllPageRowsSelected}
+        checked={
+          mockTable.getIsAllPageRowsSelected() ||
+          (mockTable.getIsSomePageRowsSelected() && 'indeterminate')
+        }
+        onCheckedChange={(value) =>
+          mockTable.toggleAllPageRowsSelected(!!value)
+        }
       />
     );
 
-    expect(getByLabelText('Select all')).not.toBeChecked();
-  });
-
-  test('checkbox is indeterminate when some rows are selected', () => {
-    const { getByLabelText } = render(
-      <HeaderSelectCell
-        getIsAllPageRowsSelected={() => false}
-        getIsSomePageRowsSelected={() => true}
-        toggleAllPageRowsSelected={mockToggleAllPageRowsSelected}
-      />
-    );
-
-    const checkbox = getByLabelText('Select all');
-    expect(checkbox.getAttribute('data-state')).toBe('indeterminate');
+    const checkbox = screen.getByRole('checkbox', { name: /Select all/i });
+    expect(checkbox).not.toBeChecked();
   });
 });

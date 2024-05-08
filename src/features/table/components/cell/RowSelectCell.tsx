@@ -1,17 +1,20 @@
-import { Row } from '@tanstack/react-table';
+import { CheckedState } from '@radix-ui/react-checkbox';
 
 import { Checkbox } from '@/components/shadcn/ui/checkbox';
-import { FileInfo } from '@/types/types';
 
 interface RowSelectCellProps {
-  row: Row<FileInfo>;
+  checked: boolean;
+  onCheckedChange: (value: CheckedState) => void;
 }
 
-export default function RowSelectCell({ row }: RowSelectCellProps) {
+export default function RowSelectCell({
+  checked,
+  onCheckedChange,
+}: RowSelectCellProps) {
   return (
     <Checkbox
-      checked={row.getIsSelected()}
-      onCheckedChange={(value) => row.toggleSelected(!!value)}
+      checked={checked}
+      onCheckedChange={onCheckedChange}
       aria-label='Select row'
     />
   );

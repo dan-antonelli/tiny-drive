@@ -1,13 +1,17 @@
-import { flexRender } from '@tanstack/react-table';
-
-import { TableProps } from '../../types/types';
+import { HeaderGroup, flexRender } from '@tanstack/react-table';
 
 import { TableHead, TableHeader, TableRow } from '@/components/Table';
 
-export default function DataTableHeader<TData>({ table }: TableProps<TData>) {
+interface DataTableHeaderProps<TData> {
+  headerGroups: HeaderGroup<TData>[];
+}
+
+export default function DataTableHeader<TData>({
+  headerGroups,
+}: DataTableHeaderProps<TData>) {
   return (
     <TableHeader>
-      {table.getHeaderGroups().map((headerGroup) => (
+      {headerGroups.map((headerGroup) => (
         <TableRow key={headerGroup.id}>
           {headerGroup.headers.map((header) => {
             return (

@@ -57,18 +57,32 @@ export default function DataTable<TData, TValue>({
   return (
     <div>
       <div className='flex items-center py-4'>
-        <Filter table={table} />
-        <ColumnTypeFilter table={table} />
+        <Filter
+          placeholder='Filter items by name...'
+          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            table.getColumn('name')?.setFilterValue(event.target.value)
+          }
+        />
+        <ColumnTypeFilter columns={table.getAllColumns()} />
       </div>
       <div className='w-full'>
         <Table>
-          <DataTableHeader table={table} />
-          <DataTableBody table={table} columns={columns} />
+          <DataTableHeader headerGroups={table.getHeaderGroups()} />
+          <DataTableBody rows={table.getRowModel().rows} columns={columns} />
         </Table>
       </div>
       <div className='flex items-center justify-between space-x-4 py-4'>
-        <SelectedRowInfo table={table} />
-        <Pagination table={table} />
+        <SelectedRowInfo
+          filteredSelectedRows={table.getSelectedRowModel().rows}
+          filteredRowModelRows={table.getFilteredRowModel().rows}
+        />
+        <Pagination
+          previousPage={table.previousPage}
+          nextPage={table.nextPage}
+          isPreviousDisabled={!table.getCanPreviousPage()}
+          isNextDisabled={!table.getCanNextPage()}
+        />
       </div>
     </div>
   );

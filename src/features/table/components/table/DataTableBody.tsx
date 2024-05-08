@@ -1,21 +1,20 @@
-import { ColumnDef, flexRender } from '@tanstack/react-table';
-
-import { TableProps } from '../../types/types';
+import { ColumnDef, Row, flexRender } from '@tanstack/react-table';
 
 import { TableBody, TableCell, TableRow } from '@/components/Table';
 
-interface DataTableBodyProps<TData, TValue> extends TableProps<TData> {
+interface DataTableBodyProps<TData, TValue> {
+  rows: Row<TData>[];
   columns: ColumnDef<TData, TValue>[];
 }
 
 export default function DataTableBody<TData, TValue>({
-  table,
+  rows,
   columns,
 }: DataTableBodyProps<TData, TValue>) {
   return (
     <TableBody>
-      {table.getRowModel().rows?.length ? (
-        table.getRowModel().rows.map((row) => (
+      {rows?.length ? (
+        rows.map((row) => (
           <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
             {row.getVisibleCells().map((cell) => (
               <TableCell

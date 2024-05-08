@@ -68,8 +68,8 @@ export default function DataTable<TData, TValue>({
       </div>
       <div className='w-full'>
         <Table>
-          <DataTableHeader table={table} />
-          <DataTableBody table={table} columns={columns} />
+          <DataTableHeader headerGroups={table.getHeaderGroups()} />
+          <DataTableBody rows={table.getRowModel().rows} columns={columns} />
         </Table>
       </div>
       <div className='flex items-center justify-between space-x-4 py-4'>
